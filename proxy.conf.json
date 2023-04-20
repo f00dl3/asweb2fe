@@ -1,0 +1,9 @@
+{
+    "/v1/*": {
+      "target": "https://localhost:8444/asWeb/r/",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true,
+      "pathRewrite": { "^/v1": "https://localhost:8444/asWeb/r" }
+    }
+}

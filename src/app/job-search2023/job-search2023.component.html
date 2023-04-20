@@ -1,0 +1,97 @@
+<h3>2023 Job Search</h3>
+
+<form>
+    <div class="mb-3 row justify-content-between" style="align-items: self-end">
+        <div class="col-xs d-flex col-sm-auto">
+            <label for="table-complete-search" class="col-xs-3 me-2 col-sm-auto col-form-label">
+                <h5>Search:</h5>
+            </label>
+            <div class="col-xs-3 col-sm-auto">
+                <input id="table-complete-search2" type="text" class="form-control" name="searchTerm"
+                 [(ngModel)]="jobSearch2023RecordTable.searchTerm">
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3 d-flex col-sm-auto">
+        <label for="table-search-by-date-start" class="col-xs-3 me-2 col-sm-auto col-form-label">
+            <h5>Start:</h5>
+        </label>
+        <input id="table-search-by-date-start" type="date" class="form-control" name="byDateStart" 
+            [(ngModel)]="jobSearch2023RecordTable.searchByDateStart">
+        <input id="table-search-by-date-start-time" type="time" class="form-control" name="byDateStartTime" 
+            [(ngModel)]="jobSearch2023RecordTable.searchByDateStartTime">
+    </div>
+    <div class="col-xs-3 d-flex col-sm-auto">
+        <label for="table-search-by-date-start" class="col-xs-3 me-2 col-sm-auto col-form-label">
+            <h5>End:</h5>
+        </label>
+        <input id="table-search-by-date-end" type="date" class="form-control" name="byDateEnd" 
+            [(ngModel)]="jobSearch2023RecordTable.searchByDateEnd">
+        <input id="table-search-by-date-end-time" type="time" class="form-control" name="byDateEndTime" 
+            [(ngModel)]="jobSearch2023RecordTable.searchByDateEndTime">
+    </div>
+    <div class="col-xs-3 col-sm-auto justify-content-end">
+        <button type="button" style="width: 65%; background-color: rgb(83,145,83)" class="btn btn-secondary me-2"
+            click="exportExcelJobSearch2023()">Excel Export</button>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border text-primary" *ngIf="jobSearch2023RecordTable.loading$ | async" role="status">
+        </div>
+    </div>
+    <table class="table table-striped" id="main-table">
+        <thead class="table-dark">
+            <tr id="table-header">
+                <th scope="col">ID</th>
+                <th scope="col" sortable [jsr_sortable]="'date'" (jsr_sort)="onSortJobSearch2023Records($event)">Date</th>
+                <th scope="col" sortable [jsr_sortable]="'company'" (jsr_sort)="onSortJobSearch2023Records($event)">Company</th>
+                <th scope="col" sortable [jsr_sortable]="'position'" (jsr_sort)="onSortJobSearch2023Records($event)">Position</th>
+                <th scope="col" sortable [jsr_sortable]="'status'" (jsr_sort)="onSortJobSearch2023Records($event)">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let record of jobSearch2023Records$ | async">
+                <td>{{record.id}}</td>
+                <td><ngb-highlight [result]="record.date" [term]="jobSearch2023RecordTable.searchTerm"></ngb-highlight></td>
+                <td><ngb-highlight [result]="record.company" [term]="jobSearch2023RecordTable.searchTerm"></ngb-highlight></td>
+                <td><ngb-highlight [result]="record.position" [term]="jobSearch2023RecordTable.searchTerm"></ngb-highlight></td>
+                <td><ngb-highlight [result]="record.status" [term]="jobSearch2023RecordTable.searchTerm"></ngb-highlight></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-between p-2">
+        <ngb-pagination [collectionSize="(jobSearch2023RecordTable.total$ | async)!" 
+            [(page)]="jobSearch2023RecordTable.page"
+            [pageSize]="jobSearch2023RecordTable.pageSize"
+            [boundaryLinks]="true">
+            <ng-template ngbPaginationPages let-page let-pages="pages">
+                <li class="ngb-custom-pages-item" *ngIf="pages.length > 0">
+                    <div class="mb-3 d-flex flex-nowrap px-2">
+                        <label id="paginationInputLabel" for="paginationInput" class="col-form-label me-2 ms-1">Page</label>
+                        <input #i
+                            type="text"
+                            inputmode="numeric"
+                            pattern="[0-9]*"
+                            class="form-control custom-pages-input"
+                            id="paginationInput"
+                            [value]="page"
+                            (keyup.enter)="selectJobSearch2023RecordPage(i.value)"
+                            (blur)="selectJobSearch2023RecordPage(i.value)"
+                            (input)="formatInput($any($event).target)"
+                            aria-labelledby="paginationInputLabel paginationDescription"
+                            style="width: 4.5rem"/>
+                        <span id="paginationDescription" class="col-form-label text-nowrap px-2">
+                            of {{pages.length}}
+                        </span>
+                    </div>
+                </li>
+            </ng-template>
+        </ngb-pagination>
+        <select class="form-select" style="width:auto" name="pageSize"
+            [(ngModel)]="jobSearch2023RecordTable.pageSize">
+            <option [ngValue]="10">10 items per page</option>
+            <option [ngValue]="25">25 items per page</option>
+            <option [ngValue]="50">50 items per page</option>
+            <option [ngValue]="(jobSearch2023RecordTable.total$ | async)!">All</option>
+        </select>
+    </div>
+</form>
