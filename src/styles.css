@@ -51,5 +51,5 @@ SPAN.td {
 	padding: 2px;
 }
 
-@font-face { font-family: Garineldo; src: url('/asWeb/fonts/Garineldo.otf'); }
-@font-face { font-family: Nikodecs; src: url('/asWeb/fonts/Nikodecs.otf'); }
+@font-face { font-family: Garineldo; src: url('/assets/Garineldo.otf'); }
+@font-face { font-family: Nikodecs; src: url('/assets/Nikodecs.otf'); }

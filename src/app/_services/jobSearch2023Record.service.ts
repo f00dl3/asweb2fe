@@ -122,6 +122,7 @@ export class JobSearch2023RecordService {
     public _search(): Observable<SearchResult> {
         return this.getRecordData().pipe(
             map((data) => {
+                console.log("Data: " + data);
                 const { sortColumn, sortDirection, pageSize, page, searchTerm, searchByDateStart, searchByDateStartTime, searchByDateEnd, searchByDateEndTime } = this._state;
                 let allRecordList: JobSearch2023Record[] = [];
                 allRecordList = data;
@@ -149,6 +150,7 @@ export class JobSearch2023RecordService {
     })
 
     public getRecordData() {
+        console.log("Getting data...");
         return this.http.get<JobSearch2023Record[]>(this.urlPreRecords).pipe(
             retryWithBackoff(1000, 3),
             catchError(() => {
