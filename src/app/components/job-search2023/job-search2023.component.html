@@ -20,8 +20,6 @@
         </label>
         <input id="table-search-by-date-start" type="date" class="form-control" name="byDateStart" 
             [(ngModel)]="jobSearch2023RecordTable.searchByDateStart">
-        <input id="table-search-by-date-start-time" type="time" class="form-control" name="byDateStartTime" 
-            [(ngModel)]="jobSearch2023RecordTable.searchByDateStartTime">
     </div>
 
     <div class="col-xs-3 d-flex col-sm-auto">
@@ -30,8 +28,6 @@
         </label>
         <input id="table-search-by-date-end" type="date" class="form-control" name="byDateEnd" 
             [(ngModel)]="jobSearch2023RecordTable.searchByDateEnd">
-        <input id="table-search-by-date-end-time" type="time" class="form-control" name="byDateEndTime" 
-            [(ngModel)]="jobSearch2023RecordTable.searchByDateEndTime">
     </div>
 
     <div class="col-xs-3 col-sm-auto justify-content-end">
@@ -43,7 +39,7 @@
         <div class="spinner-border text-primary" *ngIf="jobSearch2023RecordTable.loading$ | async" role="status">
         </div>
     </div>
-    
+
     <table class="table table-striped" id="main-table">
         <thead class="table-dark">
             <tr id="table-header">

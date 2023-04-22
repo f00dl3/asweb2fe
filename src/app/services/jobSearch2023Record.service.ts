@@ -19,9 +19,7 @@ interface State {
     pageSize: number;
     searchTerm: string;
     searchByDateStart: string;
-    searchByDateStartTime: string;
     searchByDateEnd: string;
-    searchByDateEndTime: string;
     sortColumn: SortColumnJobSearch2023Record;
     sortDirection: SortDirection;
 }
@@ -66,18 +64,16 @@ export class JobSearch2023RecordService {
         pageSize: 25,
         searchTerm: '',
         searchByDateStart: '',
-        searchByDateStartTime: '00:00:00',
         searchByDateEnd: '',
-        searchByDateEndTime: '23:59:59',
         sortColumn: '',
         sortDirection: ''
     };
 
     constructor(private pipe: DecimalPipe, private http: HttpClient) {
 
-        let yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        this.searchByDateStart = formatDate(yesterday, 'yyyy-MM-dd', 'en');
+        let startDate = new Date();
+        startDate.setDate(startDate.getDate() - 90);
+        this.searchByDateStart = formatDate(startDate, 'yyyy-MM-dd', 'en');
         this.searchByDateEnd = formatDate(new Date(), 'yyyy-MM-dd', 'en');
         this._search$.pipe(
             tap(() => this._loading$.next(true)),
@@ -100,16 +96,12 @@ export class JobSearch2023RecordService {
     get page() { return this._state.page; }
     get pageSize() { return this._state.pageSize; }
     get searchByDateStart() { return this._state.searchByDateStart; }
-    get searchByDateStartTime() { return this._state.searchByDateStartTime; }
     get searchByDateEnd() { return this._state.searchByDateEnd; }
-    get searchByDateEndTime() { return this._state.searchByDateEndTime; }
 
     set page(page: number) { this._set({page}); }
     set pageSize(pageSize: number) { this._set({pageSize}); }
     set searchByDateStart(searchByDateStart: string) { this._set({searchByDateStart}); }
-    set searchByDateStartTime(searchByDateStartTime: string) { this._set({searchByDateStartTime}); }
     set searchByDateEnd(searchByDateEnd: string) { this._set({searchByDateEnd}); }
-    set searchByDateEndTime(searchByDateEndTime: string) { this._set({searchByDateEndTime}); }
     set searchTerm(searchTerm: string) { this._set({searchTerm}); }
     set sortColumn(sortColumn: SortColumnJobSearch2023Record) { this._set({sortColumn}); }
     set sortDirection(sortDirection: SortDirection) { this._set({sortDirection}); }
@@ -124,13 +116,12 @@ export class JobSearch2023RecordService {
             map((data) => {
                 //console.log("Data: " + data);
                 const { sortColumn, sortDirection, pageSize, 
-                    page, searchTerm, searchByDateStart, searchByDateStartTime,
-                     searchByDateEnd, searchByDateEndTime } = this._state;
+                    page, searchTerm, searchByDateStart, searchByDateEnd } = this._state;
                 let allRecordList: JobSearch2023Record[] = [];
                 allRecordList = data;
                 let records = sort(allRecordList, sortColumn, sortDirection);
-                let timeStart = searchByDateStart + ' ' + searchByDateStartTime;
-                let timeEnd = searchByDateEnd + ' ' + searchByDateEndTime;
+                let timeStart = searchByDateStart;
+                let timeEnd = searchByDateEnd;
                 records = records.filter(
                     m =>
                         new Date(m.date) >= new Date(timeStart) &&
