@@ -3,16 +3,16 @@ import { Component, Injectable, QueryList, ViewChildren, Input } from '@angular/
 import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import * as XSLX from 'xlsx';
-import { NgbdSortableHeader, SortEventJobSearch2023Record } from '../_directives/sortable.directive';
+import { NgbdSortableHeader, SortEventJobSearch2023Record } from 'src/app/directives/sortable.directive';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { JobSearch2023Record } from '../_entities/jobSearch2023Record';
-import { JobSearch2023RecordService } from '../_services/jobSearch2023Record.service';
-import { DataCacheService } from '../_services/datacache.service';
+import { JobSearch2023Record } from 'src/app/entities/jobSearch2023Record';
+import { JobSearch2023RecordService } from 'src/app/services/jobSearch2023Record.service';
+import { DataCacheService } from 'src/app/services/datacache.service';
 
 const FILTER_PAG_REGEX = /[^0-90]/g;
 
 @Component({
-  selector: 'app-job-search2023',
+  selector: 'app-job-search2023-new',
   templateUrl: './job-search2023.component.html',
   styleUrls: ['./job-search2023.component.css'],
   providers: [ DecimalPipe, JobSearch2023RecordService ]

@@ -1,5 +1,5 @@
 import { Directive, EventEmitter, Input, Output } from "@angular/core";
-import { JobSearch2023Record } from "../_entities/jobSearch2023Record";
+import { JobSearch2023Record } from "../entities/jobSearch2023Record";
 
 export type SortColumnJobSearch2023Record = keyof JobSearch2023Record | "";
 export type SortDirection = 'asc' | 'desc' | '';
@@ -11,7 +11,7 @@ export interface SortEventJobSearch2023Record {
 }
 
 @Directive({
-    selector: 'th[sortablerecord]',
+    selector: '[sortable]',
     host: {
         '[class.asc]': 'direction === "asc"',
         '[class.desc]': 'direction === "desc"',
@@ -19,7 +19,7 @@ export interface SortEventJobSearch2023Record {
     }
 })
 
-export class NgbdSortableHeaderRecord {
+export class NgbdSortableHeader {
 
     @Input() jsr_sortable: SortColumnJobSearch2023Record = '';
     @Input() jsr_direction: SortDirection = '';
@@ -31,3 +31,4 @@ export class NgbdSortableHeaderRecord {
     }
 
 }
+

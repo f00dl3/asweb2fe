@@ -3,7 +3,7 @@ import { EMPTY } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, retry, shareReplay } from 'rxjs/operators';
 import { retryWithBackoff } from './retrywithbackoff.service';
-import { JobSearch2023Record } from '../_entities/jobSearch2023Record';
+import { JobSearch2023Record } from '../entities/jobSearch2023Record';
 import { SharedBeans as sb } from '../SharedBeans';
 
 @Injectable({ providedIn: 'root' })

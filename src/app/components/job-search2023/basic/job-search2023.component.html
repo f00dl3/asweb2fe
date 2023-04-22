@@ -1,0 +1,24 @@
+<h3>2023 Job Search</h3>
+
+<table class="table table-striped" id="jobsearchtable">
+
+    <thead class="table-dark">
+        <th scope="col">ID</th>
+        <th scope="col">Date</th>
+        <th scope="col">Company</th>
+        <th scope="col">Position</th>
+        <th scope="col">Status</th>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let result of jobSearchResults">
+            <td>{{result.id}}</td>
+            <td>{{result.date}}</td>
+            <td>{{result.company}}</td>
+            <td>{{result.position}}</td>
+            <td>{{result.status}}</td>
+        </tr>
+
+    </tbody>
+
+</table>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HealthService } from '../_services/basic/health.service';
+import { HealthService } from 'src/app/services/basic/health.service';
 
 @Component({
   selector: 'app-landing',
@@ -9,22 +9,14 @@ import { HealthService } from '../_services/basic/health.service';
 
 export class LandingComponent implements OnInit {
 
+  showJobSearchRecord2023New: boolean = false;
+  showJobSearchRecord2023: boolean = true;
+
   constructor(private healthService: HealthService) { }
 
   healthStatus: String = "Connecting...";
     
-  ngOnInit(): void {
-
-    this.healthService.healthStatus().subscribe({
-      next: data => {
-        this.healthStatus = JSON.parse(data);
-      },
-      error: err => {
-        this.healthStatus = "Error!";
-        console.log(err);
-      }
-          
-    });
+  ngOnInit(): void {    
 
   }
   

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { SharedBeans as sb } from "../../SharedBeans";
 import { HttpHeaders } from "@angular/common/http";
-import { JobSearch2023Record } from "../../_entities/jobSearch2023Record";
+import { JobSearch2023Record } from "src/app/entities/jobSearch2023Record";
 import { HttpClient } from "@angular/common/http";
 import { Observable, catchError, of, tap } from "rxjs";
 

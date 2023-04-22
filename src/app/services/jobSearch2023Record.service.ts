@@ -1,6 +1,6 @@
 import { Inject, Injectable } from "@angular/core";
-import { SortColumnJobSearch2023Record, SortDirection } from "../_directives/sortable.directive";
-import { JobSearch2023Record } from "../_entities/jobSearch2023Record";
+import { SortDirection, SortColumnJobSearch2023Record } from "../directives/sortable.directive";
+import { JobSearch2023Record } from "../entities/jobSearch2023Record";
 import { BehaviorSubject, EMPTY, map, Observable, Subject } from "rxjs";
 import { DecimalPipe, formatDate } from "@angular/common";
 import { debounceTime, delay, switchMap, tap, catchError, shareReplay, retry } from "rxjs/operators";
@@ -122,8 +122,10 @@ export class JobSearch2023RecordService {
     public _search(): Observable<SearchResult> {
         return this.getRecordData().pipe(
             map((data) => {
-                console.log("Data: " + data);
-                const { sortColumn, sortDirection, pageSize, page, searchTerm, searchByDateStart, searchByDateStartTime, searchByDateEnd, searchByDateEndTime } = this._state;
+                //console.log("Data: " + data);
+                const { sortColumn, sortDirection, pageSize, 
+                    page, searchTerm, searchByDateStart, searchByDateStartTime,
+                     searchByDateEnd, searchByDateEndTime } = this._state;
                 let allRecordList: JobSearch2023Record[] = [];
                 allRecordList = data;
                 let records = sort(allRecordList, sortColumn, sortDirection);
@@ -136,6 +138,7 @@ export class JobSearch2023RecordService {
                 );
                 const total = records.length;
                 records = records.slice((page - 1) * this.pageSize, (page - 1) * pageSize + pageSize);
+                console.log("Records: " + total);
                 return { records, total };
             }),
             catchError(() => {
