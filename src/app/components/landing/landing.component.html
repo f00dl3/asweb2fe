@@ -4,8 +4,17 @@
 
     <ul type="dot">
         <li><button (click)="doShowJobSearchRecords2023()">Go</button> Job Search 2023 Records</li>
-        <li><button (click)="doShowJobSearchRecords2023New()">Go</button> Job Search 2023 RecordsAdvanced</li>
+        <li><button (click)="doShowJobSearchRecords2023New()">Go</button> Job Search 2023 Advanced</li>
     </ul>
+
+</ng-container>
+
+<ng-container *ngIf="!showLanding">
+
+    <nav>
+        <button (click)="doShowJobSearchRecords2023()">JSR 23</button> |
+        <button (click)="doShowJobSearchRecords2023New()">JSR 23 New</button>
+    </nav>
 
 </ng-container>
 

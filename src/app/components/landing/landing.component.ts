@@ -18,15 +18,19 @@ export class LandingComponent implements OnInit {
   constructor(private healthService: HealthService) { }
 
   doShowJobSearchRecords2023() {
-    //window.alert("Clicked old version!");
-    this.showJobSearchRecords2023 = !this.showJobSearchRecords2023;
-    this.showLanding = !this.showLanding;
+    this.hideEverything();
+    this.showJobSearchRecords2023 = true;
   }
 
   doShowJobSearchRecords2023New() {
-    //window.alert("Clicked new version!");
-    this.showJobSearchRecords2023New = !this.showJobSearchRecords2023New;
-    this.showLanding = !this.showLanding;
+    this.hideEverything();
+    this.showJobSearchRecords2023New = true;
+  }
+
+  hideEverything() {
+    this.showLanding = false;
+    this.showJobSearchRecords2023 = false;
+    this.showJobSearchRecords2023New = false;
   }
 
   healthStatus: String = "Connecting...";
