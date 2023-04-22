@@ -72,7 +72,7 @@ export class JobSearch2023RecordService {
     constructor(private pipe: DecimalPipe, private http: HttpClient) {
 
         let startDate = new Date();
-        startDate.setDate(startDate.getDate() - 90);
+        startDate.setDate(startDate.getDate() - 365);
         this.searchByDateStart = formatDate(startDate, 'yyyy-MM-dd', 'en');
         this.searchByDateEnd = formatDate(new Date(), 'yyyy-MM-dd', 'en');
         this._search$.pipe(
