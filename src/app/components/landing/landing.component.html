@@ -1,7 +1,15 @@
-<p>asWeb2 Landing Page</p>
-<div *ngIf="showJobSearchRecord2023New === true">
-    <app-job-search2023-new></app-job-search2023-new>
-</div>
-<div *ngIf="showJobSearchRecord2023 === true">
-    <app-job-search2023></app-job-search2023>
-</div>
+<ng-container *ngIf="showLanding">
+    <h1>{{title}} Landing Page</h1>
+
+    <button (click)="doShowJobSearchRecords2023()">Job Search 2023 Records</button> <br/>
+    <!-- <button (click)="doShowJobSearchRecords2023New()">Advanced</button> -->
+</ng-container>
+
+<ng-container *ngIf="showJobSearchRecords2023">
+    <app-jobSearch2023></app-jobSearch2023>
+</ng-container>
+
+<!-- Moved to router: 
+<ng-container *ngIf="showJobSearchRecords2023New">
+    <app-jobSearch2023New></app-jobSearch2023New>
+</ng-container> -->

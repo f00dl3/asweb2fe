@@ -3,9 +3,9 @@ import { JobSearch2023Service } from 'src/app/services/basic/jobSearch2023.servi
 import { JobSearch2023Record } from 'src/app/entities/jobSearch2023Record';
 
 @Component({
-  selector: 'app-job-search2023',
-  templateUrl: './job-search2023.component.html',
-  styleUrls: ['./job-search2023.component.css']
+  selector: 'app-jobSearch2023',
+  templateUrl: './job-search2023-basic.component.html',
+  styleUrls: ['./job-search2023-basic.component.css']
 })
 
 export class OldJobSearch2023Component {

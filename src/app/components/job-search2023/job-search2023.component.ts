@@ -12,7 +12,7 @@ import { DataCacheService } from 'src/app/services/datacache.service';
 const FILTER_PAG_REGEX = /[^0-90]/g;
 
 @Component({
-  selector: 'app-job-search2023-new',
+  selector: 'app-jobSearch2023New',
   templateUrl: './job-search2023.component.html',
   styleUrls: ['./job-search2023.component.css'],
   providers: [ DecimalPipe, JobSearch2023RecordService ]
@@ -58,7 +58,9 @@ export class JobSearch2023Component {
     XSLX.writeFile(wb, this.fileName);
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    console.log("New Job Search Page");
+  }
 
   selectJobSearch2023RecordPage(page: string) {
     this.page = parseInt(page, 25) || 1;

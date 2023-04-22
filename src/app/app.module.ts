@@ -14,7 +14,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { JobSearch2023Component } from './components/job-search2023/job-search2023.component';
-import { OldJobSearch2023Component } from './components/job-search2023/basic/job-search2023.component';
+import { OldJobSearch2023Component } from './components/job-search2023-basic/job-search2023-basic.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { OldJobSearch2023Component } from './job-search2023.component';
+import { OldJobSearch2023Component } from './job-search2023-basic.component';
 
 describe('JobSearch2023Component', () => {
   let component: OldJobSearch2023Component;

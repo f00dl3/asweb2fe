@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SharedBeans as sb } from './SharedBeans';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'asWeb2';
+  title: string = sb.apiTitle;
 }
