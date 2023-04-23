@@ -16,7 +16,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { JobSearch2023Component } from './components/job-search2023/job-search2023.component';
 import { OldJobSearch2023Component } from './components/job-search2023-basic/job-search2023-basic.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FitnessComponent } from './fitness/fitness.component';
+import { FitnessComponent } from './components/fitness/fitness.component';
 
 @NgModule({
   declarations: [
