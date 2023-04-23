@@ -3,6 +3,7 @@
     <h1>{{title}} Landing Page</h1>
 
     <ul type="dot">
+        <li><button (click)="doShowFitness()">Go</button> Fitness</li>
         <!-- <li><button (click)="doShowJobSearchRecords2023()">Go</button> Job Search 2023 Basic</li> -->
         <li><button (click)="doShowJobSearchRecords2023New()">Go</button> Job Search 2023</li>
     </ul>
@@ -12,10 +13,15 @@
 <ng-container *ngIf="!showLanding">
 
     <nav>
+        <button (click)="doShowFitness()">FIT</button>
         <!-- <button (click)="doShowJobSearchRecords2023()">JSR 23 Old</button> | -->
-        <button (click)="doShowJobSearchRecords2023New()">JSR 23</button>
+        <button (click)="doShowJobSearchRecords2023New()">JSR</button>
     </nav>
 
+</ng-container>
+
+<ng-container *ngIf="showFitness">
+    <app-fitness></app-fitness>
 </ng-container>
 
 <!-- <ng-container *ngIf="showJobSearchRecords2023">

@@ -11,11 +11,17 @@ import { SharedBeans as sb } from 'src/app/SharedBeans';
 export class LandingComponent implements OnInit {
 
   showLanding: boolean = true;
+  showFitness: boolean = false;
   showJobSearchRecords2023: boolean = false;
   showJobSearchRecords2023New: boolean = false;
   title: string = sb.apiTitle;
 
   constructor(private healthService: HealthService) { }
+
+  doShowFitness() {
+    this.hideEverything();
+    this.showFitness = true;
+  }
 
   doShowJobSearchRecords2023() {
     this.hideEverything();
@@ -29,6 +35,7 @@ export class LandingComponent implements OnInit {
 
   hideEverything() {
     this.showLanding = false;
+    this.showFitness = false;
     this.showJobSearchRecords2023 = false;
     this.showJobSearchRecords2023New = false;
   }

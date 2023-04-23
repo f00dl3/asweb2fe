@@ -16,6 +16,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { JobSearch2023Component } from './components/job-search2023/job-search2023.component';
 import { OldJobSearch2023Component } from './components/job-search2023-basic/job-search2023-basic.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FitnessComponent } from './fitness/fitness.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LandingComponent,
     JobSearch2023Component,
     NgbdSortableHeader,
-    OldJobSearch2023Component
+    OldJobSearch2023Component,
+    FitnessComponent
   ],
   imports: [
     BrowserModule,
