@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './fitness.component.html',
   styleUrls: ['./fitness.component.css']
 })
+
 export class FitnessComponent {
 
 }
